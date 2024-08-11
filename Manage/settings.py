@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-0%e6jb!8=#)rb4!8(u40i6)wzfi!a(96k$@x*%%gya7e7g2t!s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['chatapp-fawn-seven.vercel.app']
+ALLOWED_HOSTS = ['chatapp-fawn-seven.vercel.app', 'localhost']
 
 
 # Application definition
