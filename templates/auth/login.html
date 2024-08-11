@@ -1,0 +1,92 @@
+{% extends 'auth/auth.html' %}
+{% block main %}
+
+    <div class="mx-auto col col-md-6  m-3">
+        <h3 class="form-label">login form</h3>
+
+        <div >
+            {% if user_detail %}
+            <form method="POST" action="/login_email_verify" class="row g-3">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label">Username Auto</label>
+                    <input type="text" name="username" required class="form-control" value="{{user_detail.username}}"
+                        autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id=""
+                        placeholder="enter your password now " />
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-outline-primary">Login</button>
+                </div>
+                <span>Don't have an account yet? <a href="/signup_niew">signup</a></span>
+            </form>
+            {% else %}
+            <form method="POST" action="/login_email_verify" class="row g-3">
+                {% csrf_token %}
+
+                <div class=" mb-3">
+                    <label class="form-label">Username manual</label>
+                    <input type="text" name="username" required class="form-control" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" value="12345" id="" placeholder="" />
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-outline-primary">Login</button>
+                </div>
+                <span>Don't have an account yet? <a href="/signup_view">signup</a></span>
+            </form>
+
+            {% endif %}
+            <br><hr>
+
+        </div>
+    </div>
+
+    <div style="margin-bottom: 30vh;">
+        {% if persons %}
+        <h1>signed in user List</h1>
+
+        <table class="table mb-4">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">username</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            {% for person in persons %}
+            <tbody>
+                <tr>
+                    <td> {{ person.id }} </td>
+                    <td>{{ person.first_name }}</td>
+                    <td>{{ person.last_name }}</td>
+                    <td>{{ person.email }}</td>
+                    <td>{{ person.username }}</td>
+
+                </tr>
+            </tbody>
+
+            {% endfor %}
+        </table>
+
+
+        {% else %}
+        <h3>First log in , Practice entering your password let's see how it goes </h3>
+        {% endif %}
+
+    </div>
+
+
+{% endblock %}

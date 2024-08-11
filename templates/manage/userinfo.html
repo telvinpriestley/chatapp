@@ -1,0 +1,185 @@
+{% extends 'base/base.html' %}
+{% block main %}
+{% load static %}
+
+<div class="container">
+<div class="row g-4">
+    <div class="col-lg-8 vstack gap-4">
+        <!-- My profile START -->
+        <div class="card">
+            <!-- Cover image -->
+
+            <div class="h-300px rounded-top"
+                style="background-position: center; background-size: cover; background-repeat: no-repeat;">
+                <img src="{% static 'lik.jpeg' %}" alt="lik">
+            </div>
+            <!-- Card body START -->
+            <div class="card-body py-0">
+                <div class="d-sm-flex align-items-start text-center text-sm-start">
+                    <div>
+                        <!-- Avatar -->
+                        <div class="avatar avatar-xxl mt-n5 mb-3">
+                            <img class="avatar-img rounded-circle" style="width: 80px; height: 80px;"
+                                src="{% static '04.jpg' %}" alt="04">
+                        </div>
+                    </div>
+                    <div class="ms-sm-4 mt-sm-3">
+                        <!-- Info -->
+                        <h1 class="mb-0 h5">{{user_info.first_name}} {{user_info.last_name}} <i class="bi bi-patch-check-fill text-success small"></i>
+                        </h1>
+                        <p>0 connections</p>
+                       
+                    </div>
+                    <!-- Button -->
+                    <div class="d-flex mt-3 justify-content-center ms-sm-auto">
+                        <button class="btn btn-danger-soft me-2" type="button"> <i class="bi bi-pencil-fill pe-1"></i>
+                            Edit profile </button>
+                        <div class="dropdown">
+                            <!-- Card share action menu -->
+                            <button class="icon-md btn btn-light" type="button" id="profileAction2"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                            <!-- Card share action dropdown menu -->
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileAction2">
+                                <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Share
+                                        profile in a message</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#"> <i
+                                            class="bi bi-file-earmark-pdf fa-fw pe-2"></i>Save your profile to
+                                        PDF</a></li>
+                                <li><a class="dropdown-item" href="#"> <i class="bi bi-lock fa-fw pe-2"></i>Lock
+                                        profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"> <i class="bi bi-gear fa-fw pe-2"></i>Profile
+                                        settings</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- List profile -->
+                <ul class="list-inline mb-0 text-center text-sm-start mt-3 mt-sm-0">
+                    <li class="list-inline-item"><i class="bi bi-briefcase me-1"></i> Lead Developer</li>
+                    <li class="list-inline-item"><i class="bi bi-geo-alt me-1"></i> New Hampshire</li>
+                    <li class="list-inline-item"><i class="bi bi-calendar2-plus me-1"></i> Joined on {{user_info.date_joined}}</li>
+                </ul>
+            </div>
+            <!-- Card body END -->
+            <div class="card-footer mt-3 pt-2 pb-0">
+                <!-- Nav profile pages -->
+               <p>  Username : <a class="link active" href="#!"> {{user_info.username}} </a> </p>
+              
+            </div>
+        </div>
+
+        {% for info in room_info %}
+        <!-- Card feed item START -->
+        <div class="card">
+
+            <div class="border-bottom">
+                <p class="small mb-0 px-4 py-2"><i class="bi bi-heart-fill text-danger pe-1"></i>{{user.username}}
+                </p>
+            </div>
+            <!-- Card header START -->
+            <div class="card-header border-0 pb-0">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <!-- Avatar -->
+                        <div class="avatar me-2">
+                            <a href="#"> <img class="avatar-img rounded-circle" src="assets/images/logo/13.svg" alt="">
+                            </a>
+                        </div>
+                        <!-- Title -->
+                        <div>
+                            <h6 class="card-title mb-0"> <a href="#!"> {{info.name}} </a></h6>
+                            <p class="mb-0 small">{{info.created|timesince }}</p>
+                        </div>
+                    </div>
+                    <!-- Card share action menu -->
+                    <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardShareAction5"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-three-dots"></i>
+                    </a>
+                    <!-- Card share action dropdown menu -->
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardShareAction5">
+                        <li><a class="dropdown-item" href="#"> <i class="bi bi-pencil-fill pe-1"></i>Edit
+                                post</a></li>
+
+                        <li><a class="dropdown-item" href="#"> <i class="bi bi-x-circle fa-fw pe-2"></i>Delete
+                                post</a></li>
+
+                    </ul>
+                </div>
+                <!-- Card share action END -->
+            </div>
+            <!-- Card header START -->
+
+            <!-- Card body START -->
+            <div class="card-body pb-0">
+                <p>{{info.description}}</p>
+
+                <br>
+            </div>
+            <!-- Card body END -->
+            <!-- Card Footer START -->
+            <div class="card-footer py-3">
+                <!-- Feed react START -->
+                <ul class="nav nav-fill nav-stack small">
+                    <li class="nav-item">
+                        <a class="nav-link mb-0 active" href="#!"> <i class="bi bi-heart pe-1"></i>Liked
+                            ({{ info.roomlike_set.count }})</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mb-0" href="#!"> <i class="bi bi-chat-fill pe-1"></i>Comments
+                            ({{ info.roomcomment_set.count }})</a>
+                    </li>
+                    <!-- Card share action dropdown START -->
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link mb-0" id="cardShareAction6" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-reply-fill flip-horizontal ps-1"></i>Share ({{info.roomshare_set.count }})
+                        </a>
+                        <!-- Card share action dropdown menu -->
+
+                    </li>
+                    <!-- Card share action dropdown END -->
+
+                </ul>
+                <!-- Feed react END -->
+            </div>
+            <!-- Card Footer END -->
+        </div>
+        <!-- Card feed item END -->
+        {% endfor %}
+    </div>
+    <div class="col-lg-4">
+        <div class="col-md-6 col-lg-12">
+            <div class="card">
+                <div class="card-header border-0 pb-0">
+                    <h5 class="card-title">About</h5>
+                    <!-- Button modal -->
+                </div>
+                <!-- Card body START -->
+                <div class="card-body position-relative pt-0">
+                    <p>He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire
+                        difficulty gay assistance joy.</p>
+                    <!-- Date time -->
+                    <ul class="list-unstyled mt-3 mb-0">
+                        <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> Born: <strong>
+                                October 20, 1990 </strong> </li>
+                        <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Status: <strong> Single
+                            </strong> </li>
+                        <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong> {{user_info.email}}
+                            </strong> </li>
+                    </ul>
+                </div>
+                <!-- Card body END -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,24 @@
+{% extends 'auth/auth.html' %}
+{% block main %}
+<div class="mx-auto col-6 m-3">
+    <h3 class="form-label">email verification </h3>
+
+    <div style="margin-bottom: 30vh;">
+        <form method="POST" action="/verification_proper" class="row g-3">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="" class="form-label">4 Digit code</label>
+                <input type="passcode" class="form-control" name="passcode" id="" placeholder="" />
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-outline-primary">Verify</button>
+            </div>
+            <span>Don't have an account yet? <a href="/signup_view">signup</a></span>
+        </form>
+
+
+    </div>
+</div>
+{% endblock %}

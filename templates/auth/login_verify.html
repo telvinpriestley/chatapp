@@ -1,0 +1,35 @@
+{% extends 'auth/auth.html' %}
+{% block main %}
+
+{% if code_check %}
+<div class="mx-auto col-6 m-3">
+    <h3 class="form-label">email verification </h3>
+
+    <div style="margin-bottom: 30vh;">
+        <form method="POST" action="/login_proper" class="row g-3">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="" class="form-label">4 Digit code</label>
+                <input type="passcode" class="form-control" name="passcode" id="" placeholder="" />
+            </div>
+            <input class="form-control" type="text" value="{{code_check}}" name="correctcode">
+            <input hidden class="form-control" type="text" value="{{passwordsend}}" name="password">
+            <input hidden class="form-control" type="text" value="{{usernamesend}}" name="username">
+
+            <div>
+                <button type="submit" class="btn btn-outline-primary">Verify</button>
+            </div>
+            <span>Don't have an account yet? <a href="/signup_niew">signup</a></span>
+        </form>
+
+
+    </div>
+</div>
+{% else %}
+<h1>lol, what are you doing here ?</h1>
+<p>login <a href="/login_view">here</a> abeg </p>
+{% endif %}
+
+
+{% endblock %}

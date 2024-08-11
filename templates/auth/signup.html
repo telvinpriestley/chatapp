@@ -1,0 +1,71 @@
+{% extends 'auth/auth.html' %}
+{% block main %}
+
+    <div class="mx-auto col-6 m-3">
+        <h3 class="form-label">Registration form</h3>
+
+        <div style="margin-bottom: 30vh;">
+            <form method="POST" action="/emailVerification_sign_up" class="row g-3 needs-validation">
+                {% csrf_token %}
+                <div class="col-6 mb-3">
+                    <label class="form-label">First Name</label>
+                    <input type="text" name="first_name" required class="form-control" autocomplete="off">
+                </div>
+                <div class="col-6 mb-3">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" name="last_name" required class="form-control" autocomplete="off">
+                </div>
+                <div class="col-6 mb-3">
+                    <label class="form-label">Email </label>
+                    <input type="email" name="email" required class="form-control" autocomplete="off">
+                    <div class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+
+                <div class="col-6 mb-3">
+                    <label class="form-label">Username </label>
+                    <input type="text" name="username" required class="form-control" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="" value="12345" placeholder="" />
+                </div>
+                <div class="col-4 mb-3">
+                    <label class="form-label">Address </label>
+                    <input type="text" name="address" required class="form-control" value="1050 pleinlaan Brussel"
+                        autocomplete="off">
+                </div>
+
+                <div class="col-4 mb-3">
+                    <label class="form-label">contact </label>
+                    <input type="number" name="contact" required class="form-control" value="2371234567"
+                        autocomplete="off">
+                    <div class="form-text">please start with a country code</div>
+                </div>
+                <div class="col-3 mb-3">
+                    <label for="cusgender" class="form-label">Gender</label>
+                    <select class="form-select form-select" name="gender" required id="cusgender">
+                        <option selected disabled value="">Choose...</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                            Agree to terms and conditions
+                        </label>
+                        <div class="invalid-feedback">
+                            You must agree before submitting.
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-outline-primary">Signup</button>
+                </div>
+                <span>Already have an account? <a href="/login_view">login</a></span>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
