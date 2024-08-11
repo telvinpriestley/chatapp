@@ -48,7 +48,7 @@ https://i.postimg.cc/B6kZcBFz/04.jpg -->
                 <!-- Avatar -->
                 <div class="avatar avatar-story me-2">
                   <a href="#!"> <img class="avatar-img rounded-circle" style="width: 50px; height: 50px;"
-                    src="https://i.postimg.cc/B6kZcBFz/04.jpg" alt="04"> </a>
+                      src="https://i.postimg.cc/B6kZcBFz/04.jpg" alt="04"> </a>
                 </div>
 
                 <!-- Info -->
@@ -56,8 +56,9 @@ https://i.postimg.cc/B6kZcBFz/04.jpg -->
 
                   <div class="col col-lg-4">
                     <div class="nav nav-divider">
-                      <h6 class="nav-item card-title mb-0 mr-1 "> <a href="/userinfo/{{room.host.id}}"> {{room.host}} </a></h6>
-                      <span class="nav-item "> 2hr</span>
+                      <h6 class="nav-item card-title mb-0 mr-1 "> <a href="/userinfo/{{room.host.id}}"> {{room.host}}
+                        </a></h6>
+                      <span class="nav-item ">{{room.created|timesince}} ago  </span>
                     </div>
                     <p class="mb-0 small">{{room.topic}}</p>
                   </div>
@@ -93,7 +94,8 @@ https://i.postimg.cc/B6kZcBFz/04.jpg -->
           <div class="card-body">
             <p>{{room.description}}</p>
             <!-- Card img -->
-            <img class="card-img fit" style="width: 100px; height: 100px;" src="https://i.postimg.cc/23RCZjWL/first.jpg" alt="Post">
+            <img class="card-img fit" style="width: 100px; height: 100px;" src="https://i.postimg.cc/23RCZjWL/first.jpg"
+              alt="Post">
             <!-- Feed react START -->
             <ul class="nav nav-stack py-3 small">
               <li class="nav-item">
@@ -101,7 +103,7 @@ https://i.postimg.cc/B6kZcBFz/04.jpg -->
                   <i class="bi bi-hand-thumbs-up-fill pe-1"></i>Liked ({{ room.roomlike_set.count }})</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#!"> <i class="bi bi-chat-fill pe-1"></i>Comments 
+                <a class="nav-link" href="#!"> <i class="bi bi-chat-fill pe-1"></i>Comments
                   ({{ room.roomcomment_set.count }})</a>
               </li>
               <!-- Card share action START -->
@@ -111,18 +113,23 @@ https://i.postimg.cc/B6kZcBFz/04.jpg -->
                 </a>
                 <!-- Card share action dropdown menu -->
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardShareAction">
-                  <li><a class="dropdown-item" href="/add_share/{{room.id}}/"> <i class="bi bi-envelope fa-fw pe-2"></i>Send via Direct
+                  <li><a class="dropdown-item" href="/add_share/{{room.id}}/"> <i
+                        class="bi bi-envelope fa-fw pe-2"></i>Send via Direct
                       Message</a></li>
-                  <li><a class="dropdown-item" href="/add_share/{{room.id}}/"> <i class="bi bi-bookmark-check fa-fw pe-2"></i>Bookmark </a>
+                  <li><a class="dropdown-item" href="/add_share/{{room.id}}/"> <i
+                        class="bi bi-bookmark-check fa-fw pe-2"></i>Bookmark </a>
                   </li>
-                  <li><a class="dropdown-item" href="/add_share/{{room.id}}/"> <i class="bi bi-link fa-fw pe-2"></i>Copy link to post</a>
+                  <li><a class="dropdown-item" href="/add_share/{{room.id}}/"> <i class="bi bi-link fa-fw pe-2"></i>Copy
+                      link to post</a>
                   </li>
-                  <li><a class="dropdown-item" href="/add_share/{{room.id}}/"> <i class="bi bi-share fa-fw pe-2"></i>Share post via …</a>
+                  <li><a class="dropdown-item" href="/add_share/{{room.id}}/"> <i
+                        class="bi bi-share fa-fw pe-2"></i>Share post via …</a>
                   </li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item" href="/add_share/{{room.id}}/"> <i class="bi bi-pencil-square fa-fw pe-2"></i>Share to News
+                  <li><a class="dropdown-item" href="/add_share/{{room.id}}/"> <i
+                        class="bi bi-pencil-square fa-fw pe-2"></i>Share to News
                       Feed</a></li>
                 </ul>
               </li>
@@ -142,7 +149,7 @@ https://i.postimg.cc/B6kZcBFz/04.jpg -->
                 <textarea name="comment" data-autoresize class="form-control pe-5 bg-light" rows="1"
                   placeholder="Add a comment..."></textarea>
 
-                <input hidden type="number" name="room_id" value="{{room.id}}" >
+                <input hidden type="number" name="room_id" value="{{room.id}}">
                 <button class="nav-link bg-transparent px-3 position-absolute top-50 end-0 translate-middle-y border-0"
                   type="submit">
                   <i class="bi bi-send-fill"> </i>
@@ -171,59 +178,64 @@ https://i.postimg.cc/B6kZcBFz/04.jpg -->
                   <!-- Comment react -->
                   <ul class="nav nav-divider py-2 small">
                     <li class="nav-item">
-                      <a class="nav-link" href="/add_comment_like/{{comment.id}}"> Like ({{ comment.commentlike_set.count }})</a>
+                      <a class="nav-link" href="/add_comment_like/{{comment.id}}"> Like ({{
+                        comment.commentlike_set.count }})</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" data-bs-toggle="collapse" href="#multiCollapseExample1{{comment.id}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Reply</a>
+                      <a class="nav-link" data-bs-toggle="collapse" href="#multiCollapseExample1{{comment.id}}"
+                        role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Reply</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" data-bs-toggle="collapse" href="#multiCollapseExample2{{comment.id}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample2">View {{comment.commentreply_set.count}} replies</a>
+                      <a class="nav-link" data-bs-toggle="collapse" href="#multiCollapseExample2{{comment.id}}"
+                        role="button" aria-expanded="false" aria-controls="multiCollapseExample2">View
+                        {{comment.commentreply_set.count}} replies</a>
                     </li>
                   </ul>
-<div class="nothing">
-  <div class="row">
-    <div class="col-6">
-      <div class="collapse multi-collapse" id="multiCollapseExample1{{comment.id}}">
-        
-          <form method="post" action="/add_comment_reply" class="nav nav-item w-100 position-relative">
-            {% csrf_token %}
-            <input name="message" data-autoresize class="form-control pe-5 bg-light"
-              placeholder="Reply..."/>
+                  <div class="nothing">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="collapse multi-collapse" id="multiCollapseExample1{{comment.id}}">
 
-            <input hidden type="text" name="comment_id" value="{{comment.id}}" >
-            <button class="nav-link bg-transparent px-3 position-absolute top-50 end-0 translate-middle-y border-0"
-              type="submit">
-              <i class="bi bi-send-fill"> </i>
-            </button>
-          </form>
-        
-      </div>
-    </div>
-    <div class="col">
-      <div class="collapse multi-collapse" id="multiCollapseExample2{{comment.id}}">
-        <div class="card card-body">
-          <ul class="comment-item-nested list-unstyled">
-            <!-- Comment item nested START -->  
-          {% for reply in comment.commentreply_set.all|slice:":2"%}
-            <!-- Comment item START -->
-            <li class="comment-item">
-              <div class="d-flex">
-                <!-- Avatar -->
-                <div class="avatar avatar-xs">
-                  <a href="#!"><img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg"
-                      alt=""></a>
-                </div>
-                <!-- Comment by -->
-                <div >
-                  <div class="bg-light p-3 rounded">
-                    <div class="d-flex justify-content-between">
-                      <h6 class="mb-1"> <a href="#!"> {{reply.user.username}} </a> </h6>
-                      <small class="ms-2">{{ reply.created|timesince }} ago</small>
-                    </div>
-                    <p class="small mb-0"> {{reply.message}}</p>
-                  </div>
-                  <!-- Comment react -->
-                  <!-- <ul class="nav nav-divider py-2 small">
+                          <form method="post" action="/add_comment_reply" class="nav nav-item w-100 position-relative">
+                            {% csrf_token %}
+                            <input name="message" data-autoresize class="form-control pe-5 bg-light"
+                              placeholder="Reply..." />
+
+                            <input hidden type="text" name="comment_id" value="{{comment.id}}">
+                            <button
+                              class="nav-link bg-transparent px-3 position-absolute top-50 end-0 translate-middle-y border-0"
+                              type="submit">
+                              <i class="bi bi-send-fill"> </i>
+                            </button>
+                          </form>
+
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="collapse multi-collapse" id="multiCollapseExample2{{comment.id}}">
+                          <div class="card card-body">
+                            <ul class="comment-item-nested list-unstyled">
+                              <!-- Comment item nested START -->
+                              {% for reply in comment.commentreply_set.all|slice:":2"%}
+                              <!-- Comment item START -->
+                              <li class="comment-item">
+                                <div class="d-flex">
+                                  <!-- Avatar -->
+                                  <div class="avatar avatar-xs">
+                                    <a href="#!"><img class="avatar-img rounded-circle"
+                                        src="assets/images/avatar/06.jpg" alt=""></a>
+                                  </div>
+                                  <!-- Comment by -->
+                                  <div>
+                                    <div class="bg-light p-3 rounded">
+                                      <div class="d-flex justify-content-between">
+                                        <h6 class="mb-1"> <a href="#!"> {{reply.user.username}} </a> </h6>
+                                        <small class="ms-2">{{ reply.created|timesince }} ago</small>
+                                      </div>
+                                      <p class="small mb-0"> {{reply.message}}</p>
+                                    </div>
+                                    <!-- Comment react -->
+                                    <!-- <ul class="nav nav-divider py-2 small">
                     <li class="nav-item">
                       <a class="nav-link" href="#!"> Like (5)</a>
                     </li>
@@ -231,22 +243,22 @@ https://i.postimg.cc/B6kZcBFz/04.jpg -->
                       <a class="nav-link" href="#!"> Reply</a>
                     </li>
                   </ul> -->
-                </div>
-              </div>
-            </li>
-            {% endfor %}
-            <!-- Comment item END -->
-          </ul>
-         
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+                                  </div>
+                                </div>
+                              </li>
+                              {% endfor %}
+                              <!-- Comment item END -->
+                            </ul>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                 </div>
               </div>
-              
+
               {% endfor %}
             </div>
             {% endif %}
@@ -286,9 +298,9 @@ https://i.postimg.cc/B6kZcBFz/04.jpg -->
           <p>Likes: {{ room.roomlike_set.count }}</p>
           <p>Comments: {{ room.roomcomment_set.count }}</p>
           <p>Shares: {{ room.roomshare_set.count }}</p>
-          <button >Like</button>
-          <button >Comment</button>
-          <button >Share</button>
+          <button>Like</button>
+          <button>Comment</button>
+          <button>Share</button>
 
           <h3>Comments:</h3>
           {% for comment in room.roomcomment_set.all %}
@@ -296,8 +308,8 @@ https://i.postimg.cc/B6kZcBFz/04.jpg -->
             <p>{{ comment.user.username }}: {{ comment.message }}</p>
             <p>Likes: {{ comment.commentlike_set.count }}</p>
             <p>Replies: {{ comment.commentreply_set.count }}</p>
-            <button >Like</button>
-            <button >Reply</button>
+            <button>Like</button>
+            <button>Reply</button>
           </div>
           {% endfor %}
         </div>
